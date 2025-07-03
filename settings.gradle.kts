@@ -20,14 +20,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-rootProject.name = "android-template" // todo Replace with your own app’s name
-include(
-    ":mobile",
-    ":wear",
-    ":tv",
-    ":auto",
-    ":xr",
-    ":core"
-)
+rootProject.name = "MergeTag"
+include(":app")
