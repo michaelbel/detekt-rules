@@ -1,0 +1,10 @@
+build:
+  maxIssues: 0
+
+config:
+  validation: true
+
+michaelbel:
+  active: true
+  ModifierPaddingArgumentOrder:
+    active: true

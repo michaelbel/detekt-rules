@@ -1,10 +1,52 @@
-MergeTag
-=
+# detekt-rules
 
-[![workflow-status](https://img.shields.io/github/actions/workflow/status/michaelbel/previewseekbar/ci.yml?style=for-the-badge&logo=github&labelColor=3F464F)](https://github.com/michaelbel/previewseekbar/actions)
-[![last-commit](https://img.shields.io/github/last-commit/michaelbel/previewseekbar?style=for-the-badge&logo=github&labelColor=3F464F)](https://github.com/michaelbel/previewseekbar/commits)
+Набор кастомных правил для `detekt`.
 
-<merge> 
-<include>
+## Что внутри
 
-<img src=".github/pics/app.gif" alt="App Video" width="33%">
+- `detekt-rules` - основной `ruleset`-jar с `RuleSetProvider`, правилами и тестами
+- `sample` - локальный demo-модуль для быстрых экспериментов
+
+## Текущие правила
+
+### `ModifierPaddingArgumentOrder`
+Проверяет порядок именованных аргументов в Compose padding API:
+
+### `PaddingValuesSymmetry`
+Проверяет симметричные значения в Compose padding API и предлагает сократить запись до `horizontal` и `vertical`.
+
+## Как подключить в рабочем проекте
+
+Добавить `mavenLocal()` в репозитории:
+
+```kotlin
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+```
+
+Подключить ruleset:
+
+```kotlin
+dependencies {
+    detektPlugins("org.michaelbel:detekt-rules:0.1.1-SNAPSHOT")
+}
+```
+
+Если рабочий проект уже запускал `detekt` с прежней версией артефакта, полезно один раз выполнить:
+
+```bash
+./gradlew --refresh-dependencies detekt
+```
+
+## Настройка `detekt.yml`
+
+```yaml
+michaelbel:
+  active: true
+  ModifierPaddingArgumentOrder:
+    active: true
+  PaddingValuesSymmetry:
+    active: true
+```

@@ -1,4 +1,20 @@
 plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin.android) apply false
+    base
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.detekt) apply false
+}
+
+group = "org.michaelbel"
+version = "0.1.1-SNAPSHOT"
+
+subprojects {
+    group = rootProject.group
+    version = rootProject.version
+}
+
+tasks.named("check") {
+    dependsOn(
+        ":detekt-rules:check",
+        ":sample:check",
+    )
 }

@@ -1,0 +1,6 @@
+michaelbel:
+  active: true
+  ModifierPaddingArgumentOrder:
+    active: true
+  PaddingValuesSymmetry:
+    active: true

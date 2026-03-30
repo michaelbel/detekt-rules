@@ -9,9 +9,6 @@ generated
 
 # Idea
 .idea
-
-/config/keystore_release.jks
-/config/keystore.properties
+*.iml
 
 local.properties
-releaseNotes.txt
