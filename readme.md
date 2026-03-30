@@ -30,7 +30,7 @@ repositories {
 
 ```kotlin
 dependencies {
-    detektPlugins("org.michaelbel:detekt-rules:0.1.1-SNAPSHOT")
+    detektPlugins("org.michaelbel:detekt-rules:0.1.2-SNAPSHOT")
 }
 ```
 
