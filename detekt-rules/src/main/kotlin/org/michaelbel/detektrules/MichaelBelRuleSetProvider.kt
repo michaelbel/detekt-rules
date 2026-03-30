@@ -1,5 +1,6 @@
 package org.michaelbel.detektrules
 
+import org.michaelbel.detektrules.rules.ComposableFileOptIn
 import org.michaelbel.detektrules.rules.ModifierPaddingArgumentOrder
 import org.michaelbel.detektrules.rules.NoSpaceBeforeInheritanceColon
 import org.michaelbel.detektrules.rules.PaddingValuesSymmetry
@@ -18,6 +19,7 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
         RuleSet(
             id = ruleSetId,
             rules = listOf(
+                ComposableFileOptIn(config),
                 ModifierPaddingArgumentOrder(config),
                 NoSpaceBeforeInheritanceColon(config),
                 PaddingValuesSymmetry(config),

@@ -13,6 +13,7 @@ class MichaelBelRuleSetProviderTest {
         assertEquals(RULE_SET_ID, ruleSet.id)
         assertEquals(
             listOf(
+                "ComposableFileOptIn",
                 "ModifierPaddingArgumentOrder",
                 "NoSpaceBeforeInheritanceColon",
                 "PaddingValuesSymmetry",

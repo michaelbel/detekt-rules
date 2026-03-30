@@ -9,6 +9,7 @@
 
 ## Список правил
 
+- `ComposableFileOptIn` - проверяет, что экспериментальные аннотации у `@Composable` объявляются только на уровне файла через `@file:OptIn(...)`.
 - `ModifierPaddingArgumentOrder` - проверяет порядок именованных аргументов в Compose padding API.
 - `NoSpaceBeforeInheritanceColon` - проверяет, что в объявлениях наследования и делегации перед `:` не ставится пробел.
 - `PaddingValuesSymmetry` - проверяет симметричные значения в Compose padding API и предлагает сократить запись до `horizontal` и `vertical`.
@@ -44,6 +45,8 @@ dependencies {
 ```yaml
 michaelbel:
   active: true
+  ComposableFileOptIn:
+    active: true
   ModifierPaddingArgumentOrder:
     active: true
   NoSpaceBeforeInheritanceColon:

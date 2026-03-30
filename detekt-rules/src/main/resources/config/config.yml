@@ -1,5 +1,7 @@
 michaelbel:
   active: true
+  ComposableFileOptIn:
+    active: true
   ModifierPaddingArgumentOrder:
     active: true
   NoSpaceBeforeInheritanceColon:
