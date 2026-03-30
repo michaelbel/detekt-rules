@@ -10,7 +10,7 @@ import io.gitlab.arturbosch.detekt.api.Severity
 import org.jetbrains.kotlin.psi.KtAnnotationEntry
 import org.jetbrains.kotlin.psi.KtNamedFunction
 
-class ComposableFileOptIn(config: Config) : Rule(config) {
+class ComposableFileOptIn(config: Config): Rule(config) {
 
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
