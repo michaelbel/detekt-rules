@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.KtNameReferenceExpression
 import org.jetbrains.kotlin.psi.KtQualifiedExpression
 
-class ModifierPaddingArgumentOrder(config: Config) : Rule(config) {
+class ModifierPaddingArgumentOrder(config: Config): Rule(config) {
 
     override val issue: Issue = Issue(
         id = javaClass.simpleName,

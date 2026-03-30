@@ -12,7 +12,12 @@ class MichaelBelRuleSetProviderTest {
 
         assertEquals(RULE_SET_ID, ruleSet.id)
         assertEquals(
-            listOf("ModifierPaddingArgumentOrder", "PaddingValuesSymmetry"),
+            listOf(
+                "ModifierPaddingArgumentOrder",
+                "NoSpaceBeforeInheritanceColon",
+                "PaddingValuesSymmetry",
+                "TextAlignInTextStyle",
+            ),
             ruleSet.rules.map { it.ruleId },
         )
     }

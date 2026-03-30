@@ -7,13 +7,12 @@
 - `detekt-rules` - основной `ruleset`-jar с `RuleSetProvider`, правилами и тестами
 - `sample` - локальный demo-модуль для быстрых экспериментов
 
-## Текущие правила
+## Список правил
 
-### `ModifierPaddingArgumentOrder`
-Проверяет порядок именованных аргументов в Compose padding API:
-
-### `PaddingValuesSymmetry`
-Проверяет симметричные значения в Compose padding API и предлагает сократить запись до `horizontal` и `vertical`.
+- `ModifierPaddingArgumentOrder` - проверяет порядок именованных аргументов в Compose padding API.
+- `NoSpaceBeforeInheritanceColon` - проверяет, что в объявлениях наследования и делегации перед `:` не ставится пробел.
+- `PaddingValuesSymmetry` - проверяет симметричные значения в Compose padding API и предлагает сократить запись до `horizontal` и `vertical`.
+- `TextAlignInTextStyle` - проверяет, что в Compose `Text` выравнивание задается внутри `style`, а не отдельным аргументом `textAlign`.
 
 ## Как подключить в рабочем проекте
 
@@ -47,6 +46,10 @@ michaelbel:
   active: true
   ModifierPaddingArgumentOrder:
     active: true
+  NoSpaceBeforeInheritanceColon:
+    active: true
   PaddingValuesSymmetry:
+    active: true
+  TextAlignInTextStyle:
     active: true
 ```

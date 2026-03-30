@@ -2,5 +2,9 @@ michaelbel:
   active: true
   ModifierPaddingArgumentOrder:
     active: true
+  NoSpaceBeforeInheritanceColon:
+    active: true
   PaddingValuesSymmetry:
+    active: true
+  TextAlignInTextStyle:
     active: true

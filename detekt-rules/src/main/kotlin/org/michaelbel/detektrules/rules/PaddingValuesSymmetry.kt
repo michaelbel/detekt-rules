@@ -14,7 +14,7 @@ import org.jetbrains.kotlin.psi.KtNameReferenceExpression
 import org.jetbrains.kotlin.psi.KtQualifiedExpression
 import org.jetbrains.kotlin.psi.ValueArgument
 
-class PaddingValuesSymmetry(config: Config) : Rule(config) {
+class PaddingValuesSymmetry(config: Config): Rule(config) {
 
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
