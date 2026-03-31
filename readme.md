@@ -1,5 +1,7 @@
 # detekt-rules
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.michaelbel/detekt-rules.svg)](https://central.sonatype.com/artifact/io.github.michaelbel/detekt-rules)
+
 Набор кастомных правил для `detekt`.
 
 ## Что внутри
@@ -30,7 +32,7 @@ repositories {
 
 ```kotlin
 dependencies {
-    detektPlugins("org.michaelbel:detekt-rules:0.1.2-SNAPSHOT")
+    detektPlugins("io.github.michaelbel:detekt-rules:1.0.0")
 }
 ```
 
@@ -39,6 +41,50 @@ dependencies {
 ```bash
 ./gradlew --refresh-dependencies detekt
 ```
+
+## Публикация в Maven Central
+
+Проект настроен на публикацию через `Sonatype Central Portal` и совместимый `OSSRH Staging API`.
+
+Перед первым релизом нужно:
+
+1. Верифицировать `namespace` для `groupId`.
+   Сейчас в проекте используется `io.github.michaelbel`, значит в Sonatype должен быть подтвержден именно этот namespace.
+2. Создать `Portal User Token` в `central.sonatype.com`.
+3. Экспортировать приватный GPG-ключ в ASCII armor и положить секреты в `~/.gradle/gradle.properties` или в переменные окружения `ORG_GRADLE_PROJECT_*`.
+4. Указать лицензию артефакта через `POM_LICENSE_NAME` и `POM_LICENSE_URL`.
+
+Пример `~/.gradle/gradle.properties`:
+
+```properties
+POM_LICENSE_NAME=The Apache License, Version 2.0
+POM_LICENSE_URL=https://www.apache.org/licenses/LICENSE-2.0.txt
+POM_DEVELOPER_EMAIL=you@example.com
+
+sonatypeUsername=central-token-username
+sonatypePassword=central-token-password
+
+signingKeyId=optional
+signingKey=-----BEGIN PGP PRIVATE KEY BLOCK-----
+...
+-----END PGP PRIVATE KEY BLOCK-----
+signingPassword=your-key-password
+```
+
+Команды:
+
+```bash
+# локальная проверка публикации
+./gradlew publishToMavenLocal
+
+# snapshot
+./gradlew publishToSonatype
+
+# release
+./gradlew publishToSonatype closeAndReleaseStagingRepositories
+```
+
+Для релиза версия не должна заканчиваться на `-SNAPSHOT`.
 
 ## Настройка `detekt.yml`
 

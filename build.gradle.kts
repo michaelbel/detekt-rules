@@ -2,10 +2,11 @@ plugins {
     base
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.nexus.publish)
 }
 
-group = "org.michaelbel"
-version = "0.1.2-SNAPSHOT"
+group = "io.github.michaelbel"
+version = "1.0.0"
 
 subprojects {
     group = rootProject.group
@@ -17,4 +18,13 @@ tasks.named("check") {
         ":detekt-rules:check",
         ":sample:check",
     )
+}
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
+        }
+    }
 }
