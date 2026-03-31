@@ -1,14 +1,8 @@
-# Kotlin
+.idea
 .kotlin
-
-# Gradle
 .gradle
 build
 build-cache
 generated
-
-# Idea
-.idea
 *.iml
-
 local.properties
