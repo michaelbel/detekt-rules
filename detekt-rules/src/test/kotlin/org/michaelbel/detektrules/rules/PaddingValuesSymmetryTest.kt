@@ -10,7 +10,30 @@ class PaddingValuesSymmetryTest {
     private val subject = PaddingValuesSymmetry(Config.empty)
 
     @Test
-    fun `reports when all four arguments are symmetric`() {
+    fun `reports all when all four arguments are equal`() {
+        val code = """
+            package test
+
+            import androidx.compose.foundation.layout.PaddingValues
+            import androidx.compose.foundation.layout.padding
+            import androidx.compose.ui.Modifier
+            import androidx.compose.ui.unit.dp
+
+            val contentPadding = PaddingValues(start = 8.dp, top = 8.dp, end = 8.dp, bottom = 8.dp)
+            val modifier = Modifier.padding(start = 8.dp, top = 8.dp, end = 8.dp, bottom = 8.dp)
+        """.trimIndent()
+
+        assertEquals(
+            listOf(
+                "Symmetric Compose padding arguments can be replaced with all = 8.dp.",
+                "Symmetric Compose padding arguments can be replaced with all = 8.dp.",
+            ),
+            subject.lint(code).map { it.message },
+        )
+    }
+
+    @Test
+    fun `reports horizontal and vertical when all four arguments are pairwise symmetric`() {
         val code = """
             package test
 

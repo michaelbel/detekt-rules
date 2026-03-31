@@ -12,7 +12,7 @@
 - `ComposableFileOptIn` - проверяет, что экспериментальные аннотации у `@Composable` объявляются только на уровне файла через `@file:OptIn(...)`.
 - `ModifierPaddingArgumentOrder` - проверяет порядок именованных аргументов в Compose padding API.
 - `NoSpaceBeforeInheritanceColon` - проверяет, что в объявлениях наследования и делегации перед `:` не ставится пробел.
-- `PaddingValuesSymmetry` - проверяет симметричные значения в Compose padding API и предлагает сократить запись до `horizontal` и `vertical`.
+- `PaddingValuesSymmetry` - проверяет симметричные значения в Compose padding API и предлагает сократить запись до `all`, `horizontal` и `vertical`.
 - `TextAlignInTextStyle` - проверяет, что в Compose `Text` выравнивание задается внутри `style`, а не отдельным аргументом `textAlign`.
 
 ## Как подключить в рабочем проекте

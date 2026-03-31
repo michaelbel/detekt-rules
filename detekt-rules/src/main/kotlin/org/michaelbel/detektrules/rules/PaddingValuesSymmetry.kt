@@ -19,7 +19,7 @@ class PaddingValuesSymmetry(config: Config): Rule(config) {
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
         severity = Severity.Style,
-        description = "Symmetric Compose padding arguments should use horizontal and vertical parameters.",
+        description = "Symmetric Compose padding arguments should use all, horizontal, and vertical parameters when possible.",
         debt = Debt.FIVE_MINS,
     )
 
@@ -95,8 +95,12 @@ class PaddingValuesSymmetry(config: Config): Rule(config) {
             top != null &&
             start == end &&
             top == bottom
+        val hasAllSidesEqual = hasBothPairs && start == top
 
         return when {
+            hasAllSidesEqual ->
+                "Symmetric Compose padding arguments can be replaced with all = $start."
+
             hasBothPairs ->
                 "Symmetric Compose padding arguments can be replaced with horizontal = $start and vertical = $top."
 
