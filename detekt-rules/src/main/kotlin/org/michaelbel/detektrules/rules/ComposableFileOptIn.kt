@@ -16,7 +16,7 @@ class ComposableFileOptIn(config: Config): Rule(config) {
         id = javaClass.simpleName,
         severity = Severity.Style,
         description = "Experimental annotations for @Composable functions should be declared only at file level.",
-        debt = Debt.FIVE_MINS,
+        debt = Debt.FIVE_MINS
     )
 
     override fun visitNamedFunction(function: KtNamedFunction) {
@@ -34,7 +34,7 @@ class ComposableFileOptIn(config: Config): Rule(config) {
                 CodeSmell(
                     issue = issue,
                     entity = Entity.from(annotation),
-                    message = "Move experimental annotations from @Composable declarations to @file:OptIn(...).",
+                    message = "Move experimental annotations from @Composable declarations to @file:OptIn(...)."
                 ),
             )
         }

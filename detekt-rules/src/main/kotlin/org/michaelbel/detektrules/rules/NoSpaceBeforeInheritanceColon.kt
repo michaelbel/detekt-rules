@@ -9,13 +9,13 @@ import io.gitlab.arturbosch.detekt.api.Rule
 import io.gitlab.arturbosch.detekt.api.Severity
 import org.jetbrains.kotlin.psi.KtClassOrObject
 
-class NoSpaceBeforeInheritanceColon(config: Config) : Rule(config) {
+class NoSpaceBeforeInheritanceColon(config: Config): Rule(config) {
 
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
         severity = Severity.Style,
         description = "Inheritance and delegation declarations should not contain whitespace before ':'.",
-        debt = Debt.FIVE_MINS,
+        debt = Debt.FIVE_MINS
     )
 
     override fun visitClassOrObject(classOrObject: KtClassOrObject) {
@@ -38,8 +38,8 @@ class NoSpaceBeforeInheritanceColon(config: Config) : Rule(config) {
                 CodeSmell(
                     issue = issue,
                     entity = Entity.from(firstSuperTypeEntry),
-                    message = "Remove whitespace before ':' in inheritance or delegation declarations.",
-                ),
+                    message = "Remove whitespace before ':' in inheritance or delegation declarations."
+                )
             )
         }
     }

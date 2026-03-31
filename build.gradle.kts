@@ -16,7 +16,6 @@ subprojects {
 tasks.named("check") {
     dependsOn(
         ":detekt-rules:check",
-        ":sample:check",
     )
 }
 

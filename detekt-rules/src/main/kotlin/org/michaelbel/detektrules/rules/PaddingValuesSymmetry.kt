@@ -20,7 +20,7 @@ class PaddingValuesSymmetry(config: Config): Rule(config) {
         id = javaClass.simpleName,
         severity = Severity.Style,
         description = "Symmetric Compose padding arguments should use all, horizontal, and vertical parameters when possible.",
-        debt = Debt.FIVE_MINS,
+        debt = Debt.FIVE_MINS
     )
 
     override fun visitKtFile(file: KtFile) {
@@ -56,8 +56,8 @@ class PaddingValuesSymmetry(config: Config): Rule(config) {
             CodeSmell(
                 issue = issue,
                 entity = Entity.from(expression),
-                message = suggestion,
-            ),
+                message = suggestion
+            )
         )
     }
 

@@ -16,7 +16,7 @@ class TextAlignInTextStyle(config: Config): Rule(config) {
         id = javaClass.simpleName,
         severity = Severity.Style,
         description = "Compose Text should declare textAlign inside style instead of a separate textAlign argument.",
-        debt = Debt.FIVE_MINS,
+        debt = Debt.FIVE_MINS
     )
 
     override fun visitKtFile(file: KtFile) {
@@ -44,8 +44,8 @@ class TextAlignInTextStyle(config: Config): Rule(config) {
                 CodeSmell(
                     issue = issue,
                     entity = Entity.from(expression),
-                    message = "Move Text textAlign into the style argument instead of passing it separately.",
-                ),
+                    message = "Move Text textAlign into the style argument instead of passing it separately."
+                )
             )
         }
     }
@@ -58,12 +58,12 @@ class TextAlignInTextStyle(config: Config): Rule(config) {
 
         val COMPOSE_TEXT_IMPORTS = setOf(
             "androidx.compose.material.Text",
-            "androidx.compose.material3.Text",
+            "androidx.compose.material3.Text"
         )
 
         val COMPOSE_TEXT_PACKAGES = setOf(
             "androidx.compose.material",
-            "androidx.compose.material3",
+            "androidx.compose.material3"
         )
     }
 }

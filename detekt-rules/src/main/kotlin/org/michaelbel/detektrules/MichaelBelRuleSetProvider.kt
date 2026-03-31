@@ -23,7 +23,7 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
                 ModifierPaddingArgumentOrder(config),
                 NoSpaceBeforeInheritanceColon(config),
                 PaddingValuesSymmetry(config),
-                TextAlignInTextStyle(config),
-            ),
+                TextAlignInTextStyle(config)
+            )
         )
 }

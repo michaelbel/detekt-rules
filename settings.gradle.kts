@@ -20,4 +20,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "detekt-rules"
 include(":detekt-rules")
-include(":sample")

@@ -19,7 +19,7 @@ class ModifierPaddingArgumentOrder(config: Config): Rule(config) {
         id = javaClass.simpleName,
         severity = Severity.Style,
         description = "Named arguments in Compose padding APIs must match the Compose API order.",
-        debt = Debt.FIVE_MINS,
+        debt = Debt.FIVE_MINS
     )
 
     override fun visitKtFile(file: KtFile) {
@@ -64,8 +64,8 @@ class ModifierPaddingArgumentOrder(config: Config): Rule(config) {
                 CodeSmell(
                     issue = issue,
                     entity = Entity.from(expression),
-                    message = "Compose padding arguments must follow the Compose API order.",
-                ),
+                    message = "Compose padding arguments must follow the Compose API order."
+                )
             )
         }
     }
@@ -95,7 +95,7 @@ class ModifierPaddingArgumentOrder(config: Config): Rule(config) {
 
         val supportedArgumentOrders = listOf(
             listOf("start", "top", "end", "bottom"),
-            listOf("horizontal", "vertical"),
+            listOf("horizontal", "vertical")
         )
     }
 }
