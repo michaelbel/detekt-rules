@@ -4,6 +4,18 @@
 
 Набор кастомных правил для `detekt`.
 
+## Как подключить
+
+```kotlin
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    detektPlugins("io.github.michaelbel:detekt-rules:1.0.0")
+}
+```
+
 ## Список правил
 
 | Rule | Description |
