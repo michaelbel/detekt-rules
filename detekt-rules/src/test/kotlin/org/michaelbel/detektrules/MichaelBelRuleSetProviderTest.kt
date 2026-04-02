@@ -13,11 +13,13 @@ class MichaelBelRuleSetProviderTest {
         assertEquals(RULE_SET_ID, ruleSet.id)
         assertEquals(
             listOf(
+                "ConstrainAsOperatorOrder",
                 "ComposableFileOptIn",
                 "ModifierPaddingArgumentOrder",
                 "NoSpaceBeforeInheritanceColon",
                 "PaddingValuesSymmetry",
                 "TextAlignInTextStyle",
+                "UseLastIndexInsteadOfSizeMinusOne",
             ),
             ruleSet.rules.map { it.ruleId },
         )
