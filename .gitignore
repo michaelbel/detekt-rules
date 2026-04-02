@@ -6,3 +6,4 @@ build-cache
 generated
 *.iml
 local.properties
+.claude/settings.local.json
