@@ -28,8 +28,8 @@ class ConstrainAsOperatorOrder(config: Config) : Rule(config) {
 
         if (expression.calleeExpression?.text != CONSTRAIN_AS_FUNCTION_NAME) return
 
-        val lambda = expression.lambdaArguments.firstOrNull()?.getLambdaExpression() ?: return
-        val statements = lambda.bodyExpression?.statements ?: return
+        val statements = expression.lambdaArguments.firstOrNull()
+            ?.getLambdaExpression()?.bodyExpression?.statements ?: return
 
         val presentConstraints = statements.mapNotNull { extractConstraintName(it) }
             .filter { it in EXPECTED_ORDER }

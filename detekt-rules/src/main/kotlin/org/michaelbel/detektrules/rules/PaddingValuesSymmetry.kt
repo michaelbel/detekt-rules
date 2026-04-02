@@ -19,7 +19,7 @@ class PaddingValuesSymmetry(config: Config): Rule(config) {
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
         severity = Severity.Style,
-        description = "Symmetric Compose padding arguments should use all, horizontal, and vertical parameters when possible.",
+        description = "Symmetric padding arguments should use all, horizontal, or vertical parameters.",
         debt = Debt.FIVE_MINS
     )
 
@@ -87,32 +87,33 @@ class PaddingValuesSymmetry(config: Config): Rule(config) {
         val top = get("top")?.getArgumentExpression()?.text
         val end = get("end")?.getArgumentExpression()?.text
         val bottom = get("bottom")?.getArgumentExpression()?.text
-
-        val hasOnlyHorizontalPair = keys == setOf("start", "end") && start != null && start == end
-        val hasOnlyVerticalPair = keys == setOf("top", "bottom") && top != null && top == bottom
-        val hasBothPairs = keys == setOf("start", "top", "end", "bottom") &&
-            start != null &&
-            top != null &&
-            start == end &&
-            top == bottom
-        val hasAllSidesEqual = hasBothPairs && start == top
-
         return when {
-            hasAllSidesEqual ->
+            isAllSidesSymmetric(start, top, end, bottom) ->
                 "Symmetric Compose padding arguments can be replaced with all = $start."
-
-            hasBothPairs ->
+            isBothPairsSymmetric(start, top, end, bottom) ->
                 "Symmetric Compose padding arguments can be replaced with horizontal = $start and vertical = $top."
-
-            hasOnlyHorizontalPair ->
+            isHorizontalSymmetric(start, end) ->
                 "Symmetric Compose padding arguments can be replaced with horizontal = $start."
-
-            hasOnlyVerticalPair ->
+            isVerticalSymmetric(top, bottom) ->
                 "Symmetric Compose padding arguments can be replaced with vertical = $top."
-
             else -> null
         }
     }
+
+    private fun Map<String, ValueArgument>.isAllSidesSymmetric(
+        start: String?, top: String?, end: String?, bottom: String?
+    ) = isBothPairsSymmetric(start, top, end, bottom) && start == top
+
+    private fun Map<String, ValueArgument>.isBothPairsSymmetric(
+        start: String?, top: String?, end: String?, bottom: String?
+    ) = keys == setOf("start", "top", "end", "bottom") &&
+        start != null && top != null && start == end && top == bottom
+
+    private fun Map<String, ValueArgument>.isHorizontalSymmetric(start: String?, end: String?) =
+        keys == setOf("start", "end") && start != null && start == end
+
+    private fun Map<String, ValueArgument>.isVerticalSymmetric(top: String?, bottom: String?) =
+        keys == setOf("top", "bottom") && top != null && top == bottom
 
     private companion object {
         const val MODIFIER_RECEIVER_NAME = "Modifier"

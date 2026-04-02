@@ -27,12 +27,10 @@ class UseLastIndexInsteadOfSizeMinusOne(config: Config) : Rule(config) {
     override fun visitBinaryExpression(expression: KtBinaryExpression) {
         super.visitBinaryExpression(expression)
 
-        if (expression.operationToken != KtTokens.MINUS) return
-
-        val left = expression.left ?: return
-        val right = expression.right ?: return
-
-        if (right !is KtConstantExpression || right.text != "1") return
+        val left = expression.left
+        val right = expression.right
+        if (expression.operationToken != KtTokens.MINUS || left == null || right == null ||
+            right !is KtConstantExpression || right.text != "1") return
 
         val receiverText = left.sizeReceiverText() ?: return
         report(
@@ -47,12 +45,10 @@ class UseLastIndexInsteadOfSizeMinusOne(config: Config) : Rule(config) {
     override fun visitDotQualifiedExpression(expression: KtDotQualifiedExpression) {
         super.visitDotQualifiedExpression(expression)
 
-        val selector = expression.selectorExpression as? KtCallExpression ?: return
-        if (selector.calleeExpression?.text != "minus") return
-
-        val args = selector.valueArguments
-        if (args.size != 1) return
-        if (args[0].getArgumentExpression()?.text != "1") return
+        val selector = expression.selectorExpression as? KtCallExpression
+        val args = selector?.valueArguments
+        if (selector?.calleeExpression?.text != "minus" || args?.size != 1 ||
+            args[0].getArgumentExpression()?.text != "1") return
 
         val receiverText = expression.receiverExpression.sizeReceiverText() ?: return
         report(
@@ -64,10 +60,8 @@ class UseLastIndexInsteadOfSizeMinusOne(config: Config) : Rule(config) {
         )
     }
 
-    private fun KtExpression.sizeReceiverText(): String? {
-        if (this !is KtDotQualifiedExpression) return null
-        val selector = selectorExpression as? KtNameReferenceExpression ?: return null
-        if (selector.getReferencedName() != "size") return null
-        return receiverExpression.text
-    }
+    private fun KtExpression.sizeReceiverText(): String? =
+        (this as? KtDotQualifiedExpression)
+            ?.takeIf { (it.selectorExpression as? KtNameReferenceExpression)?.getReferencedName() == "size" }
+            ?.receiverExpression?.text
 }
