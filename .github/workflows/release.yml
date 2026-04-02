@@ -39,7 +39,7 @@ jobs:
 
       - name: Verify release version
         run: |
-          current_version="$(sed -n 's/^version = \"\\(.*\\)\"$/\\1/p' build.gradle.kts)"
+          current_version="$(sed -n 's/^version = "\(.*\)"$/\1/p' build.gradle.kts)"
           if [ -z "$current_version" ]; then
             echo "Failed to read project version from build.gradle.kts"
             exit 1
@@ -58,7 +58,7 @@ jobs:
       - name: Resolve release metadata
         id: metadata
         run: |
-          version="$(sed -n 's/^version = \"\\(.*\\)\"$/\\1/p' build.gradle.kts)"
+          version="$(sed -n 's/^version = "\(.*\)"$/\1/p' build.gradle.kts)"
           if [ -z "$version" ]; then
             echo "Failed to read project version from build.gradle.kts"
             exit 1
