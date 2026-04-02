@@ -1,6 +1,6 @@
 # detekt-rules
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.michaelbel/detekt-rules.svg)](https://central.sonatype.com/artifact/io.github.michaelbel/detekt-rules)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.michaelbel/detekt-rules.svg?style=for-the-badge)](https://central.sonatype.com/artifact/io.github.michaelbel/detekt-rules)
 
 Набор кастомных правил для `detekt`.
 
