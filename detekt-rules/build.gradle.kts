@@ -1,5 +1,6 @@
 import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
 import org.gradle.plugins.signing.Sign
+import java.util.Base64
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
@@ -30,6 +31,23 @@ val pomDeveloperUrl = providers.gradleProperty("POM_DEVELOPER_URL").orElse("http
 val signingKeyId = providers.gradleProperty("signingKeyId")
 val signingKey = providers.gradleProperty("signingKey")
 val signingPassword = providers.gradleProperty("signingPassword")
+val normalizedSigningKey = signingKey.map { rawKey ->
+    val trimmed = rawKey.trim()
+    val unescaped = trimmed.replace("\\n", "\n")
+
+    if (unescaped.contains("BEGIN PGP PRIVATE KEY BLOCK")) {
+        unescaped
+    } else {
+        val decoded = runCatching {
+            String(Base64.getDecoder().decode(trimmed), Charsets.UTF_8).trim()
+        }.getOrNull()?.replace("\\n", "\n")
+
+        when {
+            decoded?.contains("BEGIN PGP PRIVATE KEY BLOCK") == true -> decoded
+            else -> trimmed
+        }
+    }
+}
 
 java {
     withSourcesJar()
@@ -93,7 +111,7 @@ publishing {
 }
 
 signing {
-    val key = signingKey.orNull
+    val key = normalizedSigningKey.orNull
     val password = signingPassword.orNull
 
     if (!key.isNullOrBlank()) {
@@ -105,7 +123,7 @@ signing {
 
 tasks.withType<Sign>().configureEach {
     onlyIf("signingKey is configured") {
-        !signingKey.orNull.isNullOrBlank()
+        !normalizedSigningKey.orNull.isNullOrBlank()
     }
 }
 
