@@ -1,4 +1,4 @@
-# detekt-rules
+# Detekt Rules
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.michaelbel/detekt-rules.svg?style=for-the-badge)](https://central.sonatype.com/artifact/io.github.michaelbel/detekt-rules)
 
@@ -16,18 +16,6 @@ dependencies {
 }
 ```
 
-## Список правил
-
-| Rule | Description |
-| --- | --- |
-| `ComposableFileOptIn` | Проверяет, что экспериментальные аннотации у `@Composable` объявляются только на уровне файла через `@file:OptIn(...)`. |
-| `ModifierPaddingArgumentOrder` | Проверяет порядок именованных аргументов в Compose padding API. |
-| `NoSpaceBeforeInheritanceColon` | Проверяет, что в объявлениях наследования и делегации перед `:` не ставится пробел. |
-| `PaddingValuesSymmetry` | Проверяет симметричные значения в Compose padding API и предлагает сократить запись до `all`, `horizontal` и `vertical`. |
-| `TextAlignInTextStyle` | Проверяет, что в Compose `Text` выравнивание задается внутри `style`, а не отдельным аргументом `textAlign`. |
-
-## Настройка `detekt.yml`
-
 ```yaml
 michaelbel:
   active: true
@@ -42,3 +30,13 @@ michaelbel:
   TextAlignInTextStyle:
     active: true
 ```
+
+## Список правил
+
+| Rule | Description |
+| --- | --- |
+| `ComposableFileOptIn` | Проверяет, что экспериментальные аннотации у `@Composable` объявляются только на уровне файла через `@file:OptIn(...)`. |
+| `ModifierPaddingArgumentOrder` | Проверяет порядок именованных аргументов в Compose padding API. |
+| `NoSpaceBeforeInheritanceColon` | Проверяет, что в объявлениях наследования и делегации перед `:` не ставится пробел. |
+| `PaddingValuesSymmetry` | Проверяет симметричные значения в Compose padding API и предлагает сократить запись до `all`, `horizontal` и `vertical`. |
+| `TextAlignInTextStyle` | Проверяет, что в Compose `Text` выравнивание задается внутри `style`, а не отдельным аргументом `textAlign`. |
