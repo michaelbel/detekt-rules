@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    detektPlugins("io.github.michaelbel:detekt-rules:1.0.0")
+    detektPlugins("io.github.michaelbel:detekt-rules:1.1.0")
 }
 ```
 
@@ -29,6 +29,10 @@ michaelbel:
     active: true
   TextAlignInTextStyle:
     active: true
+  ConstrainAsOperatorOrder:
+    active: true
+  UseLastIndexInsteadOfSizeMinusOne:
+    active: true
 ```
 
 ## Список правил
@@ -40,5 +44,5 @@ michaelbel:
 | `NoSpaceBeforeInheritanceColon` | Проверяет, что в объявлениях наследования и делегации перед `:` не ставится пробел. | 1.0.0 |
 | `PaddingValuesSymmetry` | Проверяет симметричные значения в Compose padding API и предлагает сократить запись до `all`, `horizontal` и `vertical`. | 1.0.0 |
 | `TextAlignInTextStyle` | Проверяет, что в Compose `Text` выравнивание задается внутри `style`, а не отдельным аргументом `textAlign`. | 1.0.0 |
-| `ConstrainAsOperatorOrder` | Проверяет порядок операторов внутри блока `constrainAs`: `width`, `height`, `start`, `top`, `end`, `bottom`. | |
-| `UseLastIndexInsteadOfSizeMinusOne` | Проверяет, что для обращения к последнему индексу коллекции используется `lastIndex` вместо `size - 1` или `size.minus(1)`. | |
+| `ConstrainAsOperatorOrder` | Проверяет порядок операторов внутри блока `constrainAs`: `width`, `height`, `start`, `top`, `end`, `bottom`. | 1.1.0 |
+| `UseLastIndexInsteadOfSizeMinusOne` | Проверяет, что для обращения к последнему индексу коллекции используется `lastIndex` вместо `size - 1` или `size.minus(1)`. | 1.1.0 |
