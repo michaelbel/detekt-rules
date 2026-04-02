@@ -27,19 +27,23 @@ class UseLastIndexInsteadOfSizeMinusOne(config: Config) : Rule(config) {
     override fun visitBinaryExpression(expression: KtBinaryExpression) {
         super.visitBinaryExpression(expression)
 
-        val left = expression.left
-        val right = expression.right
-        if (expression.operationToken != KtTokens.MINUS || left == null || right == null ||
-            right !is KtConstantExpression || right.text != "1") return
+        if (expression.operationToken == KtTokens.MINUS) {
+            val left = expression.left
+            val right = expression.right as? KtConstantExpression
 
-        val receiverText = left.sizeReceiverText() ?: return
-        report(
-            CodeSmell(
-                issue = issue,
-                entity = Entity.from(expression),
-                message = "Replace '${left.text} - 1' with '$receiverText.lastIndex'."
-            )
-        )
+            if (left != null && right?.text == "1") {
+                val receiverText = left.sizeReceiverText()
+                if (receiverText != null) {
+                    report(
+                        CodeSmell(
+                            issue = issue,
+                            entity = Entity.from(expression),
+                            message = "Replace '${left.text} - 1' with '$receiverText.lastIndex'."
+                        )
+                    )
+                }
+            }
+        }
     }
 
     override fun visitDotQualifiedExpression(expression: KtDotQualifiedExpression) {
