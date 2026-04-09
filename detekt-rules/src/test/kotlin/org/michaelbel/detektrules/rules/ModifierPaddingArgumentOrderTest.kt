@@ -27,7 +27,7 @@ class ModifierPaddingArgumentOrderTest {
                     .padding(horizontal = 16.dp, vertical = 20.dp)
                     .padding(horizontal = 16.dp)
 
-                val paddingValues = PaddingValues(start = 8.dp, top = 0.dp, end = 8.dp, bottom = 0.dp)
+                val paddingValues = PaddingValues(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp)
             }
         """.trimIndent()
 
@@ -50,7 +50,7 @@ class ModifierPaddingArgumentOrderTest {
                     .padding(bottom = 16.dp, start = 8.dp)
                     .padding(vertical = 20.dp, horizontal = 16.dp)
 
-                val paddingValues = PaddingValues(start = 8.dp, end = 8.dp, top = 0.dp, bottom = 0.dp)
+                val paddingValues = PaddingValues(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
             }
         """.trimIndent()
 
@@ -92,6 +92,70 @@ class ModifierPaddingArgumentOrderTest {
                     .padding(all = 8.dp)
 
                 val paddingValues = PaddingValues(horizontal = 8.dp, vertical = 16.dp)
+            }
+        """.trimIndent()
+
+        assertEquals(0, subject.lint(code).size)
+    }
+
+    @Test
+    fun `reports when 0dp padding arguments are redundant`() {
+        val code = """
+            package test
+
+            import androidx.compose.foundation.layout.PaddingValues
+            import androidx.compose.foundation.layout.padding
+            import androidx.compose.ui.Modifier
+            import androidx.compose.ui.unit.dp
+
+            fun invalid() {
+                val modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 0.dp)
+                    .padding(start = 8.dp, top = 0.dp, end = 8.dp, bottom = 0.dp)
+
+                val paddingValues = PaddingValues(horizontal = 8.dp, vertical = 0.dp)
+                val paddingValues2 = PaddingValues(start = 8.dp, top = 0.dp, end = 8.dp, bottom = 0.dp)
+            }
+        """.trimIndent()
+
+        assertEquals(4, subject.lint(code).size)
+    }
+
+    @Test
+    fun `does not report padding with all non-zero arguments`() {
+        val code = """
+            package test
+
+            import androidx.compose.foundation.layout.PaddingValues
+            import androidx.compose.foundation.layout.padding
+            import androidx.compose.ui.Modifier
+            import androidx.compose.ui.unit.dp
+
+            fun valid() {
+                val modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 4.dp)
+                    .padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp)
+
+                val paddingValues = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
+            }
+        """.trimIndent()
+
+        assertEquals(0, subject.lint(code).size)
+    }
+
+    @Test
+    fun `does not report when single named argument is 0dp without other args`() {
+        val code = """
+            package test
+
+            import androidx.compose.foundation.layout.PaddingValues
+            import androidx.compose.foundation.layout.padding
+            import androidx.compose.ui.Modifier
+            import androidx.compose.ui.unit.dp
+
+            fun valid() {
+                val modifier = Modifier.padding(horizontal = 8.dp)
+                val paddingValues = PaddingValues(horizontal = 8.dp)
             }
         """.trimIndent()
 

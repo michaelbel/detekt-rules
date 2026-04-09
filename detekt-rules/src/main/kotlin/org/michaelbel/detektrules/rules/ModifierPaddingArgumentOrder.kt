@@ -12,13 +12,14 @@ import org.jetbrains.kotlin.psi.KtDotQualifiedExpression
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.KtNameReferenceExpression
 import org.jetbrains.kotlin.psi.KtQualifiedExpression
+import org.jetbrains.kotlin.psi.KtValueArgument
 
 class ModifierPaddingArgumentOrder(config: Config): Rule(config) {
 
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
         severity = Severity.Style,
-        description = "Named arguments in Compose padding APIs must match the Compose API order.",
+        description = "Named arguments in Compose padding APIs must match the Compose API order and must not use redundant 0.dp values.",
         debt = Debt.FIVE_MINS
     )
 
@@ -68,10 +69,34 @@ class ModifierPaddingArgumentOrder(config: Config): Rule(config) {
                 )
             )
         }
+
+        val zeroDpArguments = expression.valueArguments.filter { argument ->
+            argument.getArgumentName() != null && argument.isZeroDp()
+        }
+
+        val shouldReportZeroDp = (isModifierPaddingCall || isPaddingValuesCall) &&
+            zeroDpArguments.isNotEmpty()
+
+        if (shouldReportZeroDp) {
+            val redundantArgs = zeroDpArguments.joinToString { "${it.getArgumentName()?.asName?.identifier} = 0.dp" }
+            report(
+                CodeSmell(
+                    issue = issue,
+                    entity = Entity.from(expression),
+                    message = "Redundant 0.dp padding arguments can be omitted: $redundantArgs. " +
+                        "Unspecified padding dimensions default to 0.dp."
+                )
+            )
+        }
     }
 
     private var hasComposePaddingImport: Boolean = false
     private var hasComposePaddingValuesImport: Boolean = false
+
+    private fun KtValueArgument.isZeroDp(): Boolean {
+        val expression = getArgumentExpression() as? KtDotQualifiedExpression ?: return false
+        return expression.receiverExpression.text == "0" && expression.selectorExpression?.text == "dp"
+    }
 
     private fun KtCallExpression.hasExplicitModifierReceiver(): Boolean {
         val qualifiedExpression = parent as? KtDotQualifiedExpression
