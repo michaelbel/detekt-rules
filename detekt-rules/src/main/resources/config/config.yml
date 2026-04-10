@@ -10,3 +10,5 @@ michaelbel:
     active: true
   TextAlignInTextStyle:
     active: true
+  SizeModifierWithConstrainAs:
+    active: true

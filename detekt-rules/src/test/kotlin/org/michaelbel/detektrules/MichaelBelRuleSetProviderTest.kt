@@ -20,6 +20,7 @@ class MichaelBelRuleSetProviderTest {
                 "PaddingValuesSymmetry",
                 "TextAlignInTextStyle",
                 "UseLastIndexInsteadOfSizeMinusOne",
+                "SizeModifierWithConstrainAs",
             ),
             ruleSet.rules.map { it.ruleId },
         )

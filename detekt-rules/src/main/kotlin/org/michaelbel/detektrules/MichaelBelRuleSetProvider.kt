@@ -6,6 +6,7 @@ import org.michaelbel.detektrules.rules.ModifierPaddingArgumentOrder
 import org.michaelbel.detektrules.rules.NoSpaceBeforeInheritanceColon
 import org.michaelbel.detektrules.rules.PaddingValuesSymmetry
 import org.michaelbel.detektrules.rules.TextAlignInTextStyle
+import org.michaelbel.detektrules.rules.SizeModifierWithConstrainAs
 import org.michaelbel.detektrules.rules.UseLastIndexInsteadOfSizeMinusOne
 import io.gitlab.arturbosch.detekt.api.Config
 import io.gitlab.arturbosch.detekt.api.RuleSet
@@ -27,7 +28,8 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
                 NoSpaceBeforeInheritanceColon(config),
                 PaddingValuesSymmetry(config),
                 TextAlignInTextStyle(config),
-                UseLastIndexInsteadOfSizeMinusOne(config)
+                UseLastIndexInsteadOfSizeMinusOne(config),
+                SizeModifierWithConstrainAs(config)
             )
         )
 }
