@@ -2,6 +2,8 @@ michaelbel:
   active: true
   ComposableFileOptIn:
     active: true
+  ConstraintLayoutRefsPostfix:
+    active: true
   ModifierPaddingArgumentOrder:
     active: true
   NoSpaceBeforeInheritanceColon:

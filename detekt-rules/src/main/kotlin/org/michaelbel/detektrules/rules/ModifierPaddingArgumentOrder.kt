@@ -19,7 +19,8 @@ class ModifierPaddingArgumentOrder(config: Config): Rule(config) {
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
         severity = Severity.Style,
-        description = "Named arguments in Compose padding APIs must match the Compose API order and must not use redundant 0.dp values.",
+        description = "Named arguments in Compose padding APIs must match the Compose API order " +
+            "and must not use redundant 0.dp values.",
         debt = Debt.FIVE_MINS
     )
 

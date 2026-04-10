@@ -15,6 +15,7 @@ class MichaelBelRuleSetProviderTest {
             listOf(
                 "ConstrainAsOperatorOrder",
                 "ComposableFileOptIn",
+                "ConstraintLayoutRefsPostfix",
                 "ModifierPaddingArgumentOrder",
                 "NoSpaceBeforeInheritanceColon",
                 "PaddingValuesSymmetry",

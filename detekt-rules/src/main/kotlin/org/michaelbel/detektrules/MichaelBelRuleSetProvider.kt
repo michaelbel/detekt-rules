@@ -2,6 +2,7 @@ package org.michaelbel.detektrules
 
 import org.michaelbel.detektrules.rules.ConstrainAsOperatorOrder
 import org.michaelbel.detektrules.rules.ComposableFileOptIn
+import org.michaelbel.detektrules.rules.ConstraintLayoutRefsPostfix
 import org.michaelbel.detektrules.rules.ModifierPaddingArgumentOrder
 import org.michaelbel.detektrules.rules.NoSpaceBeforeInheritanceColon
 import org.michaelbel.detektrules.rules.PaddingValuesSymmetry
@@ -24,6 +25,7 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
             rules = listOf(
                 ConstrainAsOperatorOrder(config),
                 ComposableFileOptIn(config),
+                ConstraintLayoutRefsPostfix(config),
                 ModifierPaddingArgumentOrder(config),
                 NoSpaceBeforeInheritanceColon(config),
                 PaddingValuesSymmetry(config),
