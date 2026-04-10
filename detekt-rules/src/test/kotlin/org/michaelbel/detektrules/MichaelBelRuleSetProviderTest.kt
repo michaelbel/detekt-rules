@@ -21,6 +21,7 @@ class MichaelBelRuleSetProviderTest {
                 "PaddingValuesSymmetry",
                 "TextAlignInTextStyle",
                 "UseLastIndexInsteadOfSizeMinusOne",
+                "SnackbarDismissOutsideLaunch",
                 "SizeModifierWithConstrainAs",
             ),
             ruleSet.rules.map { it.ruleId },
