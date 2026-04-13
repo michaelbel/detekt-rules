@@ -23,6 +23,7 @@ class MichaelBelRuleSetProviderTest {
                 "UseLastIndexInsteadOfSizeMinusOne",
                 "SnackbarDismissOutsideLaunch",
                 "SizeModifierWithConstrainAs",
+                "UseArrangementSpacedBy",
             ),
             ruleSet.rules.map { it.ruleId },
         )

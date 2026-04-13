@@ -9,6 +9,7 @@ import org.michaelbel.detektrules.rules.PaddingValuesSymmetry
 import org.michaelbel.detektrules.rules.TextAlignInTextStyle
 import org.michaelbel.detektrules.rules.SizeModifierWithConstrainAs
 import org.michaelbel.detektrules.rules.SnackbarDismissOutsideLaunch
+import org.michaelbel.detektrules.rules.UseArrangementSpacedBy
 import org.michaelbel.detektrules.rules.UseLastIndexInsteadOfSizeMinusOne
 import io.gitlab.arturbosch.detekt.api.Config
 import io.gitlab.arturbosch.detekt.api.RuleSet
@@ -33,7 +34,8 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
                 TextAlignInTextStyle(config),
                 UseLastIndexInsteadOfSizeMinusOne(config),
                 SnackbarDismissOutsideLaunch(config),
-                SizeModifierWithConstrainAs(config)
+                SizeModifierWithConstrainAs(config),
+                UseArrangementSpacedBy(config)
             )
         )
 }
