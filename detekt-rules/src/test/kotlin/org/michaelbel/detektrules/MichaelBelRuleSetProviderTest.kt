@@ -24,6 +24,7 @@ class MichaelBelRuleSetProviderTest {
                 "SnackbarDismissOutsideLaunch",
                 "SizeModifierWithConstrainAs",
                 "UseArrangementSpacedBy",
+                "UseParentHorizontalPadding",
             ),
             ruleSet.rules.map { it.ruleId },
         )

@@ -11,6 +11,7 @@ import org.michaelbel.detektrules.rules.SizeModifierWithConstrainAs
 import org.michaelbel.detektrules.rules.SnackbarDismissOutsideLaunch
 import org.michaelbel.detektrules.rules.UseArrangementSpacedBy
 import org.michaelbel.detektrules.rules.UseLastIndexInsteadOfSizeMinusOne
+import org.michaelbel.detektrules.rules.UseParentHorizontalPadding
 import io.gitlab.arturbosch.detekt.api.Config
 import io.gitlab.arturbosch.detekt.api.RuleSet
 import io.gitlab.arturbosch.detekt.api.RuleSetProvider
@@ -35,7 +36,8 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
                 UseLastIndexInsteadOfSizeMinusOne(config),
                 SnackbarDismissOutsideLaunch(config),
                 SizeModifierWithConstrainAs(config),
-                UseArrangementSpacedBy(config)
+                UseArrangementSpacedBy(config),
+                UseParentHorizontalPadding(config)
             )
         )
 }
