@@ -25,6 +25,7 @@ class MichaelBelRuleSetProviderTest {
                 "SizeModifierWithConstrainAs",
                 "UseArrangementSpacedBy",
                 "UseParentHorizontalPadding",
+                "MissingTransactionOnRelation",
             ),
             ruleSet.rules.map { it.ruleId },
         )
