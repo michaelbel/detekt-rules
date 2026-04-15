@@ -13,6 +13,7 @@ import org.jetbrains.kotlin.psi.KtExpression
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.ValueArgument
 
+@Suppress("TooManyFunctions")
 class UseArrangementSpacedBy(config: Config): Rule(config) {
 
     override val issue: Issue = Issue(
@@ -32,6 +33,7 @@ class UseArrangementSpacedBy(config: Config): Rule(config) {
         super.visitKtFile(file)
     }
 
+    @Suppress("ReturnCount")
     override fun visitCallExpression(expression: KtCallExpression) {
         super.visitCallExpression(expression)
 
@@ -117,6 +119,7 @@ class UseArrangementSpacedBy(config: Config): Rule(config) {
         return extractLeadingPaddingFromModifierChain(modifierExpr, isRow)
     }
 
+    @Suppress("ReturnCount")
     private fun extractSizeFromModifierChain(expr: KtExpression, isRow: Boolean): String? {
         if (expr !is KtDotQualifiedExpression) return null
         val selector = expr.selectorExpression as? KtCallExpression ?: return null
@@ -133,6 +136,7 @@ class UseArrangementSpacedBy(config: Config): Rule(config) {
         return extractSizeFromModifierChain(expr.receiverExpression, isRow)
     }
 
+    @Suppress("ReturnCount")
     private fun extractLeadingPaddingFromModifierChain(expr: KtExpression, isRow: Boolean): String? {
         if (expr !is KtDotQualifiedExpression) return null
         val selector = expr.selectorExpression as? KtCallExpression ?: return null

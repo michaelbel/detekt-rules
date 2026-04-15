@@ -18,7 +18,8 @@ class UseParentHorizontalPadding(config: Config) : Rule(config) {
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
         severity = Severity.Style,
-        description = "Equal edge padding on first and last children should be moved to the parent container as horizontal or vertical padding.",
+        description = "Equal edge padding on first and last children should be moved " +
+            "to the parent container as horizontal or vertical padding.",
         debt = Debt.FIVE_MINS
     )
 
@@ -32,6 +33,7 @@ class UseParentHorizontalPadding(config: Config) : Rule(config) {
         super.visitKtFile(file)
     }
 
+    @Suppress("ReturnCount", "CyclomaticComplexMethod")
     override fun visitCallExpression(expression: KtCallExpression) {
         super.visitCallExpression(expression)
 
@@ -61,13 +63,10 @@ class UseParentHorizontalPadding(config: Config) : Rule(config) {
         if (firstPaddingValue != lastPaddingValue) return
 
         val paddingType = if (isRow) HORIZONTAL else VERTICAL
-        report(
-            CodeSmell(
-                issue = issue,
-                entity = Entity.from(expression),
-                message = "Move padding($leadingArg = $firstPaddingValue) from first child and padding($trailingArg = $lastPaddingValue) from last child to parent $callee with padding($paddingType = $firstPaddingValue)."
-            )
-        )
+        val message = "Move padding($leadingArg = $firstPaddingValue) from first child " +
+            "and padding($trailingArg = $lastPaddingValue) from last child " +
+            "to parent $callee with padding($paddingType = $firstPaddingValue)."
+        report(CodeSmell(issue = issue, entity = Entity.from(expression), message = message))
     }
 
     private fun findExclusivePaddingArgValue(call: KtCallExpression, argName: String): String? {
@@ -75,6 +74,7 @@ class UseParentHorizontalPadding(config: Config) : Rule(config) {
         return findExclusivePaddingInChain(modifierExpr, argName)
     }
 
+    @Suppress("ReturnCount")
     private fun findExclusivePaddingInChain(expr: KtExpression, argName: String): String? {
         if (expr !is KtDotQualifiedExpression) return null
         val selector = expr.selectorExpression as? KtCallExpression ?: return null

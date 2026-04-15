@@ -95,10 +95,9 @@ class MissingTransactionOnRelationTest {
             }
         """.trimIndent()
 
-        assertEquals(
-            listOf("Method 'getUserWithPosts' returns 'UserWithPostsPojo' (Pojo type). Add @Transaction to ensure consistent reads."),
-            subject.lint(code).map { it.message }
-        )
+        val expected = "Method 'getUserWithPosts' returns 'UserWithPostsPojo' (Pojo type). " +
+            "Add @Transaction to ensure consistent reads."
+        assertEquals(listOf(expected), subject.lint(code).map { it.message })
     }
 
     @Test

@@ -38,7 +38,8 @@ class MissingTransactionOnRelation(config: Config) : Rule(config) {
                 CodeSmell(
                     issue = issue,
                     entity = Entity.from(function),
-                    message = "Method '${function.name}' returns '$pojoTypeName' (Pojo type). Add @Transaction to ensure consistent reads."
+                    message = "Method '${function.name}' returns '$pojoTypeName' (Pojo type). " +
+                        "Add @Transaction to ensure consistent reads."
                 )
             )
         }
@@ -53,6 +54,7 @@ class MissingTransactionOnRelation(config: Config) : Rule(config) {
     private fun KtTypeReference.findPojoTypeName(): String? =
         findPojoTypeNameFrom(typeElement)
 
+    @Suppress("ReturnCount")
     private fun findPojoTypeNameFrom(typeElement: KtTypeElement?): String? {
         if (typeElement !is KtUserType) return null
         val name = typeElement.referencedName

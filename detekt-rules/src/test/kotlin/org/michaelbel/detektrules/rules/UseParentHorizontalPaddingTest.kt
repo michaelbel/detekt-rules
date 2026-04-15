@@ -28,10 +28,9 @@ class UseParentHorizontalPaddingTest {
             }
         """.trimIndent()
 
-        assertEquals(
-            listOf("Move padding(start = 16.dp) from first child and padding(end = 16.dp) from last child to parent Row with padding(horizontal = 16.dp)."),
-            subject.lint(code).map { it.message }
-        )
+        val expected = "Move padding(start = 16.dp) from first child and padding(end = 16.dp) " +
+            "from last child to parent Row with padding(horizontal = 16.dp)."
+        assertEquals(listOf(expected), subject.lint(code).map { it.message })
     }
 
     @Test
@@ -53,10 +52,9 @@ class UseParentHorizontalPaddingTest {
             }
         """.trimIndent()
 
-        assertEquals(
-            listOf("Move padding(top = 8.dp) from first child and padding(bottom = 8.dp) from last child to parent Column with padding(vertical = 8.dp)."),
-            subject.lint(code).map { it.message }
-        )
+        val expected = "Move padding(top = 8.dp) from first child and padding(bottom = 8.dp) " +
+            "from last child to parent Column with padding(vertical = 8.dp)."
+        assertEquals(listOf(expected), subject.lint(code).map { it.message })
     }
 
     @Test
@@ -79,10 +77,9 @@ class UseParentHorizontalPaddingTest {
             }
         """.trimIndent()
 
-        assertEquals(
-            listOf("Move padding(start = 16.dp) from first child and padding(end = 16.dp) from last child to parent Row with padding(horizontal = 16.dp)."),
-            subject.lint(code).map { it.message }
-        )
+        val expected = "Move padding(start = 16.dp) from first child and padding(end = 16.dp) " +
+            "from last child to parent Row with padding(horizontal = 16.dp)."
+        assertEquals(listOf(expected), subject.lint(code).map { it.message })
     }
 
     @Test
@@ -251,9 +248,8 @@ class UseParentHorizontalPaddingTest {
             }
         """.trimIndent()
 
-        assertEquals(
-            listOf("Move padding(start = 16.dp) from first child and padding(end = 16.dp) from last child to parent Row with padding(horizontal = 16.dp)."),
-            subject.lint(code).map { it.message }
-        )
+        val expected = "Move padding(start = 16.dp) from first child and padding(end = 16.dp) " +
+            "from last child to parent Row with padding(horizontal = 16.dp)."
+        assertEquals(listOf(expected), subject.lint(code).map { it.message })
     }
 }
