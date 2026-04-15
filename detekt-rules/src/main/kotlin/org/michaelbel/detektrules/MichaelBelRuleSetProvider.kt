@@ -4,6 +4,7 @@ import org.michaelbel.detektrules.rules.ConstrainAsOperatorOrder
 import org.michaelbel.detektrules.rules.ComposableFileOptIn
 import org.michaelbel.detektrules.rules.ConstraintLayoutRefsPostfix
 import org.michaelbel.detektrules.rules.ModifierPaddingArgumentOrder
+import org.michaelbel.detektrules.rules.MultipleSerializableApiModels
 import org.michaelbel.detektrules.rules.NoSpaceBeforeInheritanceColon
 import org.michaelbel.detektrules.rules.PaddingValuesSymmetry
 import org.michaelbel.detektrules.rules.TextAlignInTextStyle
@@ -31,6 +32,7 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
                 ComposableFileOptIn(config),
                 ConstraintLayoutRefsPostfix(config),
                 ModifierPaddingArgumentOrder(config),
+                MultipleSerializableApiModels(config),
                 NoSpaceBeforeInheritanceColon(config),
                 PaddingValuesSymmetry(config),
                 TextAlignInTextStyle(config),
