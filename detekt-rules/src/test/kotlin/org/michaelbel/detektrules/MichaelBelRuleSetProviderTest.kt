@@ -27,6 +27,7 @@ class MichaelBelRuleSetProviderTest {
                 "UseArrangementSpacedBy",
                 "UseParentHorizontalPadding",
                 "MissingTransactionOnRelation",
+                "PaddingValuesZeroArguments",
             ),
             ruleSet.rules.map { it.ruleId },
         )

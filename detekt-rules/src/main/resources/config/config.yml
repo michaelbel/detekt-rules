@@ -2,15 +2,29 @@ michaelbel:
   active: true
   ComposableFileOptIn:
     active: true
+  ConstrainAsOperatorOrder:
+    active: true
   ConstraintLayoutRefsPostfix:
     active: true
+  MissingTransactionOnRelation:
+    active: true
   ModifierPaddingArgumentOrder:
+    active: true
+  MultipleSerializableApiModels:
     active: true
   NoSpaceBeforeInheritanceColon:
     active: true
   PaddingValuesSymmetry:
     active: true
+  SizeModifierWithConstrainAs:
+    active: true
+  SnackbarDismissOutsideLaunch:
+    active: true
   TextAlignInTextStyle:
     active: true
-  SizeModifierWithConstrainAs:
+  UseArrangementSpacedBy:
+    active: true
+  UseLastIndexInsteadOfSizeMinusOne:
+    active: true
+  UseParentHorizontalPadding:
     active: true
