@@ -15,6 +15,7 @@ import org.michaelbel.detektrules.rules.UseLastIndexInsteadOfSizeMinusOne
 import org.michaelbel.detektrules.rules.UseParentHorizontalPadding
 import org.michaelbel.detektrules.rules.MissingTransactionOnRelation
 import org.michaelbel.detektrules.rules.PaddingValuesZeroArguments
+import org.michaelbel.detektrules.rules.SealedClassCanBeInterface
 import io.gitlab.arturbosch.detekt.api.Config
 import io.gitlab.arturbosch.detekt.api.RuleSet
 import io.gitlab.arturbosch.detekt.api.RuleSetProvider
@@ -43,7 +44,8 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
                 UseArrangementSpacedBy(config),
                 UseParentHorizontalPadding(config),
                 MissingTransactionOnRelation(config),
-                PaddingValuesZeroArguments(config)
+                PaddingValuesZeroArguments(config),
+                SealedClassCanBeInterface(config)
             )
         )
 }
