@@ -15,7 +15,7 @@ kotlin {
 }
 
 val pomName = providers.gradleProperty("POM_NAME").orElse("detekt-rules")
-val pomDescription = providers.gradleProperty("POM_DESCRIPTION").orElse("Custom detekt rules by Michael Bel")
+val pomDescription = providers.gradleProperty("POM_DESCRIPTION").orElse("Custom detekt rules by Michael Bely")
 val pomUrl = providers.gradleProperty("POM_URL").orElse("https://github.com/michaelbel/detekt-rules")
 val pomScmUrl = providers.gradleProperty("POM_SCM_URL").orElse("https://github.com/michaelbel/detekt-rules")
 val pomScmConnection = providers.gradleProperty("POM_SCM_CONNECTION")
@@ -25,7 +25,7 @@ val pomScmDeveloperConnection = providers.gradleProperty("POM_SCM_DEVELOPER_CONN
 val pomLicenseName = providers.gradleProperty("POM_LICENSE_NAME").orElse("UNSPECIFIED")
 val pomLicenseUrl = providers.gradleProperty("POM_LICENSE_URL").orElse("https://example.invalid/license")
 val pomDeveloperId = providers.gradleProperty("POM_DEVELOPER_ID").orElse("michaelbel")
-val pomDeveloperName = providers.gradleProperty("POM_DEVELOPER_NAME").orElse("Michael Bel")
+val pomDeveloperName = providers.gradleProperty("POM_DEVELOPER_NAME").orElse("Michael Bely")
 val pomDeveloperEmail = providers.gradleProperty("POM_DEVELOPER_EMAIL")
 val pomDeveloperUrl = providers.gradleProperty("POM_DEVELOPER_URL").orElse("https://github.com/michaelbel")
 val signingKeyId = providers.gradleProperty("signingKeyId")
