@@ -1,9 +1,7 @@
-.idea
+.idea/*
+!.idea/icon.svg
 .kotlin
 .gradle
 .claude
 build
-build-cache
-generated
-*.iml
 local.properties
