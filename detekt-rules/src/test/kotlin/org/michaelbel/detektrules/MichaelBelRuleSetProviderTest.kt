@@ -28,6 +28,8 @@ class MichaelBelRuleSetProviderTest {
                 "UseParentHorizontalPadding",
                 "MissingTransactionOnRelation",
                 "PaddingValuesZeroArguments",
+                "SealedClassCanBeInterface",
+                "LazyListItemsSharedPadding",
             ),
             ruleSet.rules.map { it.ruleId },
         )

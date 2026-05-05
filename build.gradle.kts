@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.michaelbel"
-version = "1.3.0-alpha-02"
+version = "1.3.0-alpha-03"
 
 subprojects {
     group = rootProject.group

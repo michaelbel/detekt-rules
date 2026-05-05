@@ -3,6 +3,7 @@ package org.michaelbel.detektrules
 import org.michaelbel.detektrules.rules.ConstrainAsOperatorOrder
 import org.michaelbel.detektrules.rules.ComposableFileOptIn
 import org.michaelbel.detektrules.rules.ConstraintLayoutRefsPostfix
+import org.michaelbel.detektrules.rules.LazyListItemsSharedPadding
 import org.michaelbel.detektrules.rules.ModifierPaddingArgumentOrder
 import org.michaelbel.detektrules.rules.MultipleSerializableApiModels
 import org.michaelbel.detektrules.rules.NoSpaceBeforeInheritanceColon
@@ -45,7 +46,8 @@ class MichaelBelRuleSetProvider: RuleSetProvider {
                 UseParentHorizontalPadding(config),
                 MissingTransactionOnRelation(config),
                 PaddingValuesZeroArguments(config),
-                SealedClassCanBeInterface(config)
+                SealedClassCanBeInterface(config),
+                LazyListItemsSharedPadding(config)
             )
         )
 }
