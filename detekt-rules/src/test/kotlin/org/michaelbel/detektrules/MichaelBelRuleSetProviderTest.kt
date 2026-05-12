@@ -30,6 +30,7 @@ class MichaelBelRuleSetProviderTest {
                 "PaddingValuesZeroArguments",
                 "SealedClassCanBeInterface",
                 "LazyListItemsSharedPadding",
+                "VectorIconBooleanNamedArguments",
             ),
             ruleSet.rules.map { it.ruleId },
         )
