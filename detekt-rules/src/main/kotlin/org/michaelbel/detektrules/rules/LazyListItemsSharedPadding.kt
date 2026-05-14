@@ -73,6 +73,7 @@ class LazyListItemsSharedPadding(config: Config) : Rule(config) {
         )
     }
 
+    @Suppress("ReturnCount")
     private fun extractItemPaddingValue(itemCall: KtCallExpression, paddingArgName: String): String? {
         val itemLambdaBody = itemCall.lambdaArguments
             .firstOrNull()

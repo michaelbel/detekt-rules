@@ -30,6 +30,7 @@ class PaddingValuesZeroArguments(config: Config) : Rule(config) {
         super.visitKtFile(file)
     }
 
+    @Suppress("ReturnCount")
     override fun visitCallExpression(expression: KtCallExpression) {
         super.visitCallExpression(expression)
 
@@ -37,7 +38,7 @@ class PaddingValuesZeroArguments(config: Config) : Rule(config) {
         if (expression.calleeExpression?.text != PADDING_VALUES_FUNCTION_NAME) return
 
         val args = expression.valueArguments
-        if (args.isEmpty() || args.size > 4) return
+        if (args.isEmpty() || args.size > MAX_PADDING_ARGS) return
         if (args.all { it.isZeroDp() }) {
             report(
                 CodeSmell(
@@ -58,6 +59,7 @@ class PaddingValuesZeroArguments(config: Config) : Rule(config) {
     }
 
     private companion object {
+        const val MAX_PADDING_ARGS = 4
         const val PADDING_VALUES_FUNCTION_NAME = "PaddingValues"
         const val COMPOSE_PADDING_PACKAGE = "androidx.compose.foundation.layout"
         const val COMPOSE_PADDING_VALUES_IMPORT = "$COMPOSE_PADDING_PACKAGE.$PADDING_VALUES_FUNCTION_NAME"

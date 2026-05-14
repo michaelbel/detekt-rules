@@ -15,10 +15,12 @@ class SealedClassCanBeInterface(config: Config) : Rule(config) {
     override val issue: Issue = Issue(
         id = javaClass.simpleName,
         severity = Severity.Style,
-        description = "Sealed class with no constructor parameters and only object/data object members can be replaced with a sealed interface.",
+        description = "Sealed class with no constructor parameters and only object/data object members " +
+            "can be replaced with a sealed interface.",
         debt = Debt.FIVE_MINS
     )
 
+    @Suppress("ReturnCount")
     override fun visitClass(klass: KtClass) {
         super.visitClass(klass)
 
@@ -37,7 +39,8 @@ class SealedClassCanBeInterface(config: Config) : Rule(config) {
             CodeSmell(
                 issue = issue,
                 entity = Entity.from(klass),
-                message = "Sealed class '${klass.name}' has no constructor parameters and only object/data object members. Consider replacing it with a sealed interface."
+                message = "Sealed class '${klass.name}' has no constructor parameters and only object/data object members. " +
+                    "Consider replacing it with a sealed interface."
             )
         )
     }
