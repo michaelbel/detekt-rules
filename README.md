@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    detektPlugins("io.github.michaelbel:detekt-rules:1.2.0")
+    detektPlugins("io.github.michaelbel:detekt-rules:1.3.0")
 }
 ```
 
@@ -43,9 +43,17 @@ michaelbel:
     active: true
   UseArrangementSpacedBy:
     active: true
+  LazyListItemsSharedPadding:
+    active: true
+  PaddingValuesZeroArguments:
+    active: true
+  SealedClassCanBeInterface:
+    active: true
   UseLastIndexInsteadOfSizeMinusOne:
     active: true
   UseParentHorizontalPadding:
+    active: true
+  VectorIconBooleanNamedArguments:
     active: true
 ```
 
@@ -67,3 +75,7 @@ michaelbel:
 | [`SnackbarDismissOutsideLaunch`](https://github.com/michaelbel/detekt-rules/blob/develop/detekt-rules/src/main/kotlin/org/michaelbel/detektrules/rules/SnackbarDismissOutsideLaunch.kt)           | Проверяет, что `currentSnackbarData?.dismiss()` вызывается до запуска корутины `scope.launch`, а не внутри неё.                                                              | 1.2.0       |
 | [`UseArrangementSpacedBy`](https://github.com/michaelbel/detekt-rules/blob/develop/detekt-rules/src/main/kotlin/org/michaelbel/detektrules/rules/UseArrangementSpacedBy.kt)                       | Проверяет, что одинаковые отступы между дочерними элементами `Row`/`Column` через `Spacer` заменяются на `Arrangement.spacedBy()`.                                           | 1.2.0       |
 | [`UseParentHorizontalPadding`](https://github.com/michaelbel/detekt-rules/blob/develop/detekt-rules/src/main/kotlin/org/michaelbel/detektrules/rules/UseParentHorizontalPadding.kt)               | Проверяет, что одинаковые крайние отступы у первого и последнего дочерних элементов `Row`/`Column` переносятся в родительский контейнер как `horizontal`/`vertical` padding. | 1.2.0       |
+| [`LazyListItemsSharedPadding`](https://github.com/michaelbel/detekt-rules/blob/develop/detekt-rules/src/main/kotlin/org/michaelbel/detektrules/rules/LazyListItemsSharedPadding.kt)               | Проверяет, что одинаковый `horizontal`-padding на всех элементах `LazyColumn` (или `vertical` у `LazyRow`) выносится в аргумент `contentPadding`.                            | 1.3.0       |
+| [`PaddingValuesZeroArguments`](https://github.com/michaelbel/detekt-rules/blob/develop/detekt-rules/src/main/kotlin/org/michaelbel/detektrules/rules/PaddingValuesZeroArguments.kt)               | Проверяет, что `PaddingValues` с нулевыми аргументами заменяется на `PaddingValues()` без аргументов, так как все отступы по умолчанию равны `0.dp`.                         | 1.3.0       |
+| [`SealedClassCanBeInterface`](https://github.com/michaelbel/detekt-rules/blob/develop/detekt-rules/src/main/kotlin/org/michaelbel/detektrules/rules/SealedClassCanBeInterface.kt)                 | Проверяет, что `sealed class` без параметров конструктора и только с `object`-наследниками заменяется на `sealed interface`.                                                  | 1.3.0       |
+| [`VectorIconBooleanNamedArguments`](https://github.com/michaelbel/detekt-rules/blob/develop/detekt-rules/src/main/kotlin/org/michaelbel/detektrules/rules/VectorIconBooleanNamedArguments.kt)     | Проверяет, что булевые аргументы в файлах с векторными иконками передаются через именованные параметры.                                                                       | 1.3.0       |

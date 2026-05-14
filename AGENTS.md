@@ -21,11 +21,11 @@ When cutting a release:
 2. Document all new rules in `readme.md`.
 3. Drop the `-alpha-NN` suffix from the version (e.g. `1.3.0-alpha-05` → `1.3.0`).
 
-| Event | Version |
-|---|---|
-| Current release | `1.2.0` |
+| Event                                    | Version          |
+|------------------------------------------|------------------|
+| Current release                          | `1.2.0`          |
 | First rule change/addition after release | `1.3.0-alpha-01` |
-| Second change | `1.3.0-alpha-02` |
-| Third change | `1.3.0-alpha-03` |
-| Release | `1.3.0` |
-| First change after that release | `1.4.0-alpha-01` |
+| Second change                            | `1.3.0-alpha-02` |
+| Third change                             | `1.3.0-alpha-03` |
+| Release                                  | `1.3.0`          |
+| First change after that release          | `1.4.0-alpha-01` |
