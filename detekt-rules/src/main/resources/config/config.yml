@@ -24,7 +24,15 @@ michaelbel:
     active: true
   UseArrangementSpacedBy:
     active: true
+  LazyListItemsSharedPadding:
+    active: true
+  PaddingValuesZeroArguments:
+    active: true
+  SealedClassCanBeInterface:
+    active: true
   UseLastIndexInsteadOfSizeMinusOne:
     active: true
   UseParentHorizontalPadding:
+    active: true
+  VectorIconBooleanNamedArguments:
     active: true
