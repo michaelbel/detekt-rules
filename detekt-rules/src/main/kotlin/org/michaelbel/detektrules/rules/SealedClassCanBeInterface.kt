@@ -39,8 +39,8 @@ class SealedClassCanBeInterface(config: Config) : Rule(config) {
             CodeSmell(
                 issue = issue,
                 entity = Entity.from(klass),
-                message = "Sealed class '${klass.name}' has no constructor parameters and only object/data object members. " +
-                    "Consider replacing it with a sealed interface."
+                message = "Sealed class '${klass.name}' has no constructor parameters " +
+                    "and only object/data object members. Consider replacing it with a sealed interface."
             )
         )
     }

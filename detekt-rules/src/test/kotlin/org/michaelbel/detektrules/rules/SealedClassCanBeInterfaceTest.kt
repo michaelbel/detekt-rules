@@ -17,8 +17,8 @@ class SealedClassCanBeInterfaceTest {
                 data object Screen : Style()
             }
         """.trimIndent()
-        val expected = "Sealed class 'Style' has no constructor parameters and only object/data object members. " +
-            "Consider replacing it with a sealed interface."
+        val expected = "Sealed class 'Style' has no constructor parameters " +
+            "and only object/data object members. Consider replacing it with a sealed interface."
 
         assertEquals(listOf(expected), subject.lint(code).map { it.message })
     }
@@ -31,8 +31,8 @@ class SealedClassCanBeInterfaceTest {
                 object Cancel : Action()
             }
         """.trimIndent()
-        val expected = "Sealed class 'Action' has no constructor parameters and only object/data object members. " +
-            "Consider replacing it with a sealed interface."
+        val expected = "Sealed class 'Action' has no constructor parameters " +
+            "and only object/data object members. Consider replacing it with a sealed interface."
 
         assertEquals(listOf(expected), subject.lint(code).map { it.message })
     }
