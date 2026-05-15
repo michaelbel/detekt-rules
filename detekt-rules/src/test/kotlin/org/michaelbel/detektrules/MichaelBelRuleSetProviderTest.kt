@@ -17,6 +17,7 @@ class MichaelBelRuleSetProviderTest {
                 "ComposableFileOptIn",
                 "ConstraintLayoutRefsPostfix",
                 "ModifierPaddingArgumentOrder",
+                "ModifierWidthHeightCanBeSize",
                 "MultipleSerializableApiModels",
                 "NoSpaceBeforeInheritanceColon",
                 "PaddingValuesSymmetry",
